@@ -53,8 +53,8 @@
 
       <div class="container m-2 no-print" style="z-index: 100">
         <button id="gcalendarPrintButton"type="button" class="btn btn-primary">Drucken</button>
-        <button onclick="location.href='./termine.php';" type="button" class="btn btn-primary">Alle Termine</button>
-        <button onclick="location.href='./termine.php?page=staender';" type="button" class="btn btn-primary">Ständer Termine (nächste drei)</button>
+        <button onclick="location.href='./index.php';" type="button" class="btn btn-primary">Alle Termine</button>
+        <button onclick="location.href='./index.php?page=staender';" type="button" class="btn btn-primary">Ständer Termine (nächste drei)</button>
       </div>
     </main>
     
