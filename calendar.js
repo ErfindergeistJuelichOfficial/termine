@@ -102,7 +102,7 @@
     const template = Handlebars.compile(calenderTemplate);
 
     // Daten sind bereits transformiert vom Backend
-    $("#gcalendarList").html(template(data));
+    $("#egj_calendar_container").html(template(data));
 
     jQuery("#gcalendarPrintButton").click(function (event) {
       event.preventDefault();
@@ -113,7 +113,7 @@
   }
 
   erfindergeistCalendar.init = function () {
-    if (document.getElementById("gcalendarList")) {
+    if (document.getElementById("egj_calendar_container")) {
       getData();
     }
 

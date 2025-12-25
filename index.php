@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Erfindergeist Jülich e.V. Termine</title>
     <link rel="stylesheet" href="./bootstrap.min.css">
-    <link rel="stylesheet" href="./gcalender.css">
+    <link rel="stylesheet" href="./calender.css">
     <link rel="icon" href="./favicon.ico" type="image/x-icon">
   </head>
   <body>
@@ -24,18 +24,18 @@
         
         switch ($page) {
           case  $allowedPages[0]:
-            include_once('pagePrintStaender.html');
+            include_once('template_all.html');
             break;
           case $allowedPages[1]:
           default:
-            include_once('pagePrintAll.html');
+            include_once('template_staender.html');
             break;
         }
       ?>
     
       <div
         style="margin-left: auto; margin-right: auto"
-        id="gcalendarList"
+        id="egj_calendar_container"
       >
         <div class="shimmerBG content-line"></div>
         <div class="shimmerBG content-line"></div>
