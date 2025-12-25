@@ -13,16 +13,23 @@
     <main>
       
       <?PHP
-        switch ($_GET['page']) {
-          case "0":
-            echo "i equals 0";
-            break;
-          case "staender":
+        // Sichere Validierung des page-Parameters
+        $allowedPages = ['staender', 'all'];
+        $page = isset($_GET['page']) ? $_GET['page'] : 'all';
+        
+        // Nur erlaubte Werte akzeptieren
+        if (!in_array($page, $allowedPages, true)) {
+            $page = 'all';
+        }
+        
+        switch ($page) {
+          case  $allowedPages[0]:
             include_once('pagePrintStaender.html');
             break;
-          case 'all':
+          case $allowedPages[1]:
           default:
             include_once('pagePrintAll.html');
+            break;
         }
       ?>
     
@@ -61,6 +68,6 @@
     <script src="https://erfindergeist.org/wp-includes/js/jquery/jquery.min.js?ver=3.7.1" id="jquery-core-js"></script>
     <script src="https://erfindergeist.org/wp-includes/js/jquery/jquery-migrate.min.js?ver=3.4.1" id="jquery-migrate-js"></script>
     <script src="./handlebars.js?ver=4.7.8" id="handlebars-js"></script>
-    <script src="./calendar.js?ver=2"></script>
+    <script src="./calendar.js?ver=2.1"></script>
   </body>
 </html>
