@@ -129,16 +129,30 @@ jQuery(document).ready(function () {
   });
 
   Handlebars.registerHelper('ifEquals', function(arg1, arg2, options) {
-    return (arg1 == arg2) ? options.fn(this) : options.inverse(this);
+    return arg1 === arg2
   });
 
   Handlebars.registerHelper('ifNotEquals', function(arg1, arg2, options) {
-    return (arg1 != arg2) ? options.fn(this) : options.inverse(this);
+    return arg1 !== arg2
   });
-  
-  Handlebars.registerHelper("filter", function (arr, key) {
+
+  Handlebars.registerHelper("getTags", function (str) {
+    if (str && typeof str === "string") {
+      // find in str things like #tag1, #tag2
+      const regex = /#(\w+)/g;
+      const tags = [];
+      let match;
+      while ((match = regex.exec(str)) !== null) {
+        tags.push(match[1]);
+      }
+      return tags;
+    }
+    return [];
+  });
+
+  Handlebars.registerHelper("filter", function (arr, tags, key) {
     if (arr && Array.isArray(arr)) {
-      return arr.filter((dataItem) => dataItem?.tags.includes(key));
+      return arr.filter((item) => tags.includes(key));
     }
 
     return arr;

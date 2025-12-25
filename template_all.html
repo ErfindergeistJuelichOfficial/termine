@@ -9,20 +9,24 @@
       {{#if (isEven @index)}}
         <div class="row" >
       {{/if}}
+        <div class="col">
           {{summary}}
-          {{description}}
+        </div>
+        <div class="col">
+          {{dtstart}} - {{dtend}}
+        </div>
         {{#if location}}
           <div class="col">
-            {{#if (include tags "Stadtbücherei")}} Stadtbücherei {{/if}}  {{#if (include tags "Awo")}} Awo {{/if}}
+            {{#if (include (getTags description) "#Stadtbücherei")}} Stadtbücherei {{/if}}
+            {{#if (include (getTags description) "#Awo")}} Awo {{/if}}
           </div>
         {{/if}}
 
-      </div>
-      <!-- <div class="row">
         <div class="col">
-          {{description}}
+          {{location}}
         </div>
-      </div> -->
+
+      </div>
     {{/each}}
       <p>stand: {{today}}, Verantwortlich: https://erfindergeist.org, E-Mail: kontakt@erfindergeist.org</p>
   </div>
