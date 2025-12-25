@@ -9,13 +9,7 @@
       {{#if (isEven @index)}}
         <div class="row" >
       {{/if}}
-        {{#ifEquals dtstart dtend}}
-        <div class="col">
-          {{summary}}
-        </div>
-          HALLO
-          </div>
-        {{/if}}
+
         {{#if location}}
           <div class="col">
             {{#if (include tags "Stadtbücherei")}} Stadtbücherei {{/if}}  {{#if (include tags "Awo")}} Awo {{/if}}
