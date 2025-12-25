@@ -9,7 +9,8 @@
       {{#if (isEven @index)}}
         <div class="row" >
       {{/if}}
-
+          {{summary}}
+          {{description}}
         {{#if location}}
           <div class="col">
             {{#if (include tags "Stadtbücherei")}} Stadtbücherei {{/if}}  {{#if (include tags "Awo")}} Awo {{/if}}
