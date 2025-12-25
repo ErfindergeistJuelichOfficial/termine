@@ -14,7 +14,7 @@
       
       <?PHP
         // Sichere Validierung des page-Parameters
-        $allowedPages = ['staender', 'all'];
+        $allowedPages = ['all', 'staender'];
         $page = isset($_GET['page']) ? $_GET['page'] : 'all';
         
         // Nur erlaubte Werte akzeptieren
@@ -23,12 +23,12 @@
         }
         
         switch ($page) {
-          case  $allowedPages[0]:
-            include_once('template_all.html');
-            break;
-          case $allowedPages[1]:
-          default:
+          case  $allowedPages[1]:
             include_once('template_staender.html');
+            break;
+          case $allowedPages[0]:
+          default:
+            include_once('template_all.html');
             break;
         }
       ?>
