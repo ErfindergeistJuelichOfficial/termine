@@ -128,6 +128,14 @@ jQuery(document).ready(function () {
     return false;
   });
 
+  Handlebars.registerHelper('ifEquals', function(arg1, arg2, options) {
+    return (arg1 == arg2) ? options.fn(this) : options.inverse(this);
+  });
+
+  Handlebars.registerHelper('ifNotEquals', function(arg1, arg2, options) {
+    return (arg1 != arg2) ? options.fn(this) : options.inverse(this);
+  });
+  
   Handlebars.registerHelper("filter", function (arr, key) {
     if (arr && Array.isArray(arr)) {
       return arr.filter((dataItem) => dataItem?.tags.includes(key));

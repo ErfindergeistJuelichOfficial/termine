@@ -9,15 +9,15 @@
       {{#if (isEven @index)}}
         <div class="row" >
       {{/if}}
-        {{#ifEquals dtstart dtend}}
+        {{#if sameDay}}
         <div class="col">
           {{summary}}
         </div>
           <div class="col">
-            {{getDateFromDt dtstart}}
+            {{getDateFromDt dtstart_tz}}
           </div>
           <div class="col">
-            <!-- {{(getTimeFromDt dtstart)}} - {{(getTimeFromDt dtend)}} -->
+            <!-- {{(getTimeFromDt dtstart_tz)}} - {{(getTimeFromDt dtend_tz)}} -->
           </div>
         {{/if}}
         {{#if location}}
