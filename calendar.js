@@ -146,6 +146,7 @@ jQuery(document).ready(function () {
 
   Handlebars.registerHelper("first", function (arr, num) {
     if(!arr || !Array.isArray(arr)) {
+      console.warn("first helper called with invalid array. arr:", arr);
       return [];
     }
     return arr.slice(0, num);
