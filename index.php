@@ -64,7 +64,7 @@
         <!-- <button onclick="location.href='./index.php?page=staender';" type="button" class="btn btn-primary">Ständer Termine (nächste drei)</button> -->
         <br>
         <p>Eigenes Template</p>
-        <textarea class="w-100" style="height: 200px;" id="egj_custom_template_area">
+        <textarea class="w-100" style="height: 200px;" id="egj_custom_template_area"></textarea>
       </div>
     </main>
     
