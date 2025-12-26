@@ -101,6 +101,8 @@
 
     const template = Handlebars.compile(calenderTemplate);
 
+    $("#egj_calendar_data").html(JSON.stringify(data, null, 2));
+
     $("#egj_calendar_container").html(template(data));
 
     jQuery("#egj_print_Button").click(function (event) {

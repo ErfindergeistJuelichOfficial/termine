@@ -65,6 +65,8 @@
         <br>
         <p>Eigenes Template</p>
         <textarea class="w-100" style="height: 200px;" id="egj_custom_template_area"></textarea>
+        <p>Roh Daten</p>
+        <pre id="egj_calendar_data"></pre>
       </div>
     </main>
     
