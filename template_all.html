@@ -15,15 +15,22 @@
         <div class="col">
           {{dtstart}} - {{dtend}}
         </div>
-        {{#if location}}
+        {{#if ifEquals (getDateFromDt dtstart) (getDateFromDt dtend)}}
           <div class="col">
-            {{#if (include (getTags description) "#Stadtbücherei")}} Stadtbücherei {{/if}}
-            {{#if (include (getTags description) "#Awo")}} Awo {{/if}}
+            {{getDateFromDt dtstart}}
+          </div>
+          <div class="col">
+           {{(getTimeFromDt dtstart)}} - {{(getTimeFromDt dtend)}}
           </div>
         {{/if}}
+        <div class="col">
+          {{#if (include (getTags description) "#Stadtbücherei")}} Stadtbücherei {{/if}}
+          {{#if (include (getTags description) "#Awo")}} Awo {{/if}}
+        </div>
+
 
         <div class="col">
-          {{location}}
+          {{getTags description}}
         </div>
 
       </div>

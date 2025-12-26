@@ -179,13 +179,17 @@ jQuery(document).ready(function () {
   });
 
   Handlebars.registerHelper("getDateFromDt", function (str) {
-    const dateTime = new Date(str);
-    return erfindergeistCalendar.getGermanDateString(dateTime);
+    const year = str.substring(0, 4);
+    const month = str.substring(4, 6);
+    const day = str.substring(6, 8);
+    return `${day}.${month}.${year}`;
   });
 
   Handlebars.registerHelper("getTimeFromDt", function (str) {
-    const dateTime = new Date(str);
-    return erfindergeistCalendar.getGermanTimeString(dateTime);
+    const hour = str.substring(9, 11);
+    const minute = str.substring(11, 13);
+    const second = str.substring(13, 15);
+    return `${hour}:${minute}:${second}`;
   });   
 
   erfindergeistCalendar.init();
