@@ -101,15 +101,20 @@
 
     const template = Handlebars.compile(calenderTemplate);
 
-    // Daten sind bereits transformiert vom Backend
     $("#egj_calendar_container").html(template(data));
 
-    jQuery("#gcalendarPrintButton").click(function (event) {
+    jQuery("#egj_print_Button").click(function (event) {
       event.preventDefault();
-      console.log("gcalender print");
-      // jQuery(".visible-on-print").offset({ left: 0, top: 0 })
       window.print();
     });
+
+    jQuery("#egj_custom_template_area").on( "change", function(event) {
+      event.preventDefault();
+      const calenderTemplate = $("#egj_custom_template_area").val();
+      const template = Handlebars.compile(calenderTemplate);
+      $("#egj_calendar_container").html(template(data));
+    });
+
   }
 
   erfindergeistCalendar.init = function () {

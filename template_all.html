@@ -9,28 +9,28 @@
         {{#if (isEven @index)}}
           <div class="row" >
         {{/if}}
-          <div class="col text-nowrap">
+          <div class="col">
             {{summary}}
           </div>
           {{#if (ifEquals (getDateFromDt dtstart) (getDateFromDt dtend))}}
-            <div class="col text-nowrap">
+            <div class="col">
               📅 {{getDateFromDt dtstart}}
             </div>
-            <div class="col text-nowrap">
+            <div class="col">
             🕑 {{getTimeFromDt dtstart}} - {{getTimeFromDt dtend}}
             </div>
           {{/if}}
           {{#if (ifNotEquals (getDateFromDt dtstart) (getDateFromDt dtend))}}
-            <div class="col text-nowrap">
+            <div class="col">
               📅 {{getDateFromDt dtstart}} - {{getDateFromDt dtend}}
             </div>
-            <div class="col text-nowrap">
+            <div class="col">
             🕑 {{getTimeFromDt dtstart}} - {{getTimeFromDt dtend}}
             </div>
           {{/if}}
-          <div class="col text-nowrap">
-            {{#if (include (getTags description) "Stadtbücherei")}}📍 Stadtbücherei {{/if}}
-            {{#if (include (getTags description) "Awo")}}📍 Awo {{/if}}
+          <div class="col">
+            {{#if (include (getTags description) "Stadtbücherei")}}Stadtbücherei{{/if}}
+            {{#if (include (getTags description) "Awo")}}Awo{{/if}}
           </div>
         </div>
         

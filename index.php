@@ -59,15 +59,18 @@
       </div>
 
       <div class="container m-2 no-print" style="z-index: 100">
-        <button id="gcalendarPrintButton"type="button" class="btn btn-primary">Drucken</button>
+        <button id="egj_print_Button"type="button" class="btn btn-primary">Drucken</button>
         <button onclick="location.href='./index.php';" type="button" class="btn btn-primary">Alle Termine</button>
-        <button onclick="location.href='./index.php?page=staender';" type="button" class="btn btn-primary">Ständer Termine (nächste drei)</button>
+        <!-- <button onclick="location.href='./index.php?page=staender';" type="button" class="btn btn-primary">Ständer Termine (nächste drei)</button> -->
+        <br>
+        <p>Eigenes Template</p>
+        <textarea class="w-100" style="height: 200px;" id="egj_custom_template_area">
       </div>
     </main>
     
     <script src="https://erfindergeist.org/wp-includes/js/jquery/jquery.min.js?ver=3.7.1" id="jquery-core-js"></script>
     <script src="https://erfindergeist.org/wp-includes/js/jquery/jquery-migrate.min.js?ver=3.4.1" id="jquery-migrate-js"></script>
     <script src="./handlebars.js?ver=4.7.8" id="handlebars-js"></script>
-    <script src="./calendar.js?ver=2.1"></script>
+    <script src="./calendar.js?ver=2.2"></script>
   </body>
 </html>
