@@ -139,7 +139,7 @@ jQuery(document).ready(function () {
   Handlebars.registerHelper("getTags", function (str) {
     if (str && typeof str === "string") {
       // find in str things like #tag1, #tag2
-      const regex = /#([äöüÄÖÜß]\w+)/g;
+      const regex = /#([äüöÄÖÜßa-zA-Z0-9]+)/g;
       const tags = [];
       let match;
       while ((match = regex.exec(str)) !== null) {
@@ -179,7 +179,6 @@ jQuery(document).ready(function () {
   });
 
   Handlebars.registerHelper("getDateFromDt", function (str) {
-    console.log("getDateFromDt called with str:", str);
     const year = str.substring(0, 4);
     const month = str.substring(4, 6);
     const day = str.substring(6, 8);
@@ -187,7 +186,6 @@ jQuery(document).ready(function () {
   });
 
   Handlebars.registerHelper("getTimeFromDt", function (str) {
-    console.log("getTimeFromDt called with str:", str);
     const hour = str.substring(9, 11);
     const minute = str.substring(11, 13);
     return `${hour}:${minute}`;
