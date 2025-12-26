@@ -12,20 +12,20 @@
         <div class="col">
           {{summary}}
         </div>
-        <div class="col">
+        <!-- <div class="col">
           {{dtstart}} - {{dtend}}
-        </div>
+        </div> -->
         {{#if (ifEquals (getDateFromDt dtstart) (getDateFromDt dtend))}}
           <div class="col">
-            {{getDateFromDt dtstart}}
+            📅 {{getDateFromDt dtstart}}
           </div>
           <div class="col">
-           {{getTimeFromDt dtstart}} - {{getTimeFromDt dtend}}
+           🕑 {{getTimeFromDt dtstart}} - {{getTimeFromDt dtend}}
           </div>
         {{/if}}
         <div class="col">
-          {{#if (include (getTags description) "#Stadtbücherei")}} Stadtbücherei {{/if}}
-          {{#if (include (getTags description) "#Awo")}} Awo {{/if}}
+          {{#if (include (getTags description) "Stadtbücherei")}}📍 Stadtbücherei {{/if}}
+          {{#if (include (getTags description) "Awo")}}📍 Awo {{/if}}
         </div>
 
 
