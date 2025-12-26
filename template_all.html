@@ -15,7 +15,7 @@
         <div class="col">
           {{dtstart}} - {{dtend}}
         </div>
-        {{#if ifEquals (getDateFromDt dtstart) (getDateFromDt dtend)}}
+        {{#if (ifEquals (getDateFromDt dtstart) (getDateFromDt dtend))}}
           <div class="col">
             {{getDateFromDt dtstart}}
           </div>

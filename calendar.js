@@ -188,8 +188,7 @@ jQuery(document).ready(function () {
   Handlebars.registerHelper("getTimeFromDt", function (str) {
     const hour = str.substring(9, 11);
     const minute = str.substring(11, 13);
-    const second = str.substring(13, 15);
-    return `${hour}:${minute}:${second}`;
+    return `${hour}:${minute}`;
   });   
 
   erfindergeistCalendar.init();
