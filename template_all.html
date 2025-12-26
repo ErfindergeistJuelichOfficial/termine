@@ -2,37 +2,37 @@
   <div class="container-fluid text-dark visible-on-print">
     <h1>Erfindergeist Jülich e.V. Termine  </h1>
     {{#each this}}
-
-      {{#if (isOdd @index)}}
-        <div class="row" style="background-color: #eee;">
-      {{/if}}
-      {{#if (isEven @index)}}
-        <div class="row" >
-      {{/if}}
-        <div class="col">
-          {{summary}}
-        </div>
-        <!-- <div class="col">
-          {{dtstart}} - {{dtend}}
-        </div> -->
-        {{#if (ifEquals (getDateFromDt dtstart) (getDateFromDt dtend))}}
-          <div class="col">
-            📅 {{getDateFromDt dtstart}}
-          </div>
-          <div class="col">
-           🕑 {{getTimeFromDt dtstart}} - {{getTimeFromDt dtend}}
-          </div>
+      <div class="container">
+        {{#if (isOdd @index)}}
+          <div class="row" style="background-color: #eee;">
         {{/if}}
-        <div class="col">
-          {{#if (include (getTags description) "Stadtbücherei")}}📍 Stadtbücherei {{/if}}
-          {{#if (include (getTags description) "Awo")}}📍 Awo {{/if}}
+        {{#if (isEven @index)}}
+          <div class="row" >
+        {{/if}}
+          <div class="col">
+            {{summary}}
+          </div>
+          {{#if (ifEquals (getDateFromDt dtstart) (getDateFromDt dtend))}}
+            <div class="col">
+              📅 {{getDateFromDt dtstart}}
+            </div>
+            <div class="col">
+            🕑 {{getTimeFromDt dtstart}} - {{getTimeFromDt dtend}}
+            </div>
+          {{/if}}
+          {{#if (ifNotEquals (getDateFromDt dtstart) (getDateFromDt dtend))}}
+            <div class="col">
+              📅 {{getDateFromDt dtstart}} - {{getDateFromDt dtend}}
+            </div>
+            <div class="col">
+            🕑 {{getTimeFromDt dtstart}} - {{getTimeFromDt dtend}}
+            </div>
+          {{/if}}
+          <div class="col">
+            {{#if (include (getTags description) "Stadtbücherei")}}📍 Stadtbücherei {{/if}}
+            {{#if (include (getTags description) "Awo")}}📍 Awo {{/if}}
+          </div>
         </div>
-
-
-        <div class="col">
-          {{getTags description}}
-        </div>
-
       </div>
     {{/each}}
       <p>stand: {{today}}, Verantwortlich: https://erfindergeist.org, E-Mail: kontakt@erfindergeist.org</p>
