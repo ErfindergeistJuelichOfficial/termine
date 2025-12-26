@@ -1,8 +1,8 @@
 <script id="egj_calendar_template" type="text/x-handlebars-template">
   <div class="container-fluid text-dark visible-on-print">
     <h1>Erfindergeist Jülich e.V. Termine  </h1>
-    {{#each this}}
-      <div class="container">
+    <div class="container">
+      {{#each this}}
         {{#if (isOdd @index)}}
           <div class="row" style="background-color: #eee;">
         {{/if}}
@@ -33,8 +33,9 @@
             {{#if (include (getTags description) "Awo")}}📍 Awo {{/if}}
           </div>
         </div>
-      </div>
-    {{/each}}
-      <p>stand: {{today}}, Verantwortlich: https://erfindergeist.org, E-Mail: kontakt@erfindergeist.org</p>
+        
+      {{/each}}
+    </div>
+    <p>stand: {{today}}, Verantwortlich: https://erfindergeist.org, E-Mail: kontakt@erfindergeist.org</p>
   </div>
 </script>
