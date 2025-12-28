@@ -14,7 +14,7 @@
       
       <?PHP
         // Sichere Validierung des page-Parameters
-        $allowedPages = ['all', 'staender'];
+        $allowedPages = ['all', 'picture'];
         $page = isset($_GET['page']) ? $_GET['page'] : 'all';
         
         // Nur erlaubte Werte akzeptieren
@@ -24,7 +24,7 @@
         
         switch ($page) {
           case  $allowedPages[1]:
-            include_once('template_staender.html');
+            include_once('template_picture.html');
             break;
           case $allowedPages[0]:
           default:
@@ -61,6 +61,7 @@
       <div class="container m-2 no-print" style="z-index: 100">
         <button id="egj_print_Button"type="button" class="btn btn-primary">Drucken</button>
         <button onclick="location.href='./index.php';" type="button" class="btn btn-primary">Alle Termine</button>
+        <button onclick="location.href='./index.php?page=picture';" type="button" class="btn btn-primary">Termine mit Hintergrund</button>
         <!-- <button onclick="location.href='./index.php?page=staender';" type="button" class="btn btn-primary">Ständer Termine (nächste drei)</button> -->
         <br>
         <p>Eigenes Template</p>
