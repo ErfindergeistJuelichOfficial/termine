@@ -130,7 +130,7 @@
 })((window.erfindergeistCalendar = window.erfindergeistCalendar || {}), jQuery);
 
 jQuery(document).ready(function () {
-  $("#egj_custom_template_area").val(document.getElementById("egj_calendar_template").innerHTML);
+  jQuery("#egj_custom_template_area").val(document.getElementById("egj_calendar_template").innerHTML);
 
   Handlebars.registerHelper("include", function (arr, key) {
     if (arr && Array.isArray(arr)) {
