@@ -99,8 +99,6 @@
       calenderTemplate = fallbackCalenderTemplate;
     }
 
-    erfindergeistCalendar.calenderTemplate = calenderTemplate;
-
     const template = Handlebars.compile(calenderTemplate);
 
     $("#egj_calendar_data").html(JSON.stringify(data, null, 2));
@@ -132,7 +130,7 @@
 })((window.erfindergeistCalendar = window.erfindergeistCalendar || {}), jQuery);
 
 jQuery(document).ready(function () {
-  $("#egj_custom_template_area").val(erfindergeistCalendar.calenderTemplate);
+  $("#egj_custom_template_area").val(document.getElementById("egj_calendar_template").innerHTML);
 
   Handlebars.registerHelper("include", function (arr, key) {
     if (arr && Array.isArray(arr)) {
