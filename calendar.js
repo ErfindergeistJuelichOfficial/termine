@@ -101,7 +101,7 @@
 
     const template = Handlebars.compile(calenderTemplate);
 
-    $("#egj_calendar_data").html(JSON.stringify(data, null, 2));
+    $("#egj_raw_data_area").val(JSON.stringify(data, null, 2));
 
     $("#egj_calendar_container").html(template(data));
 

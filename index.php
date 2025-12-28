@@ -49,7 +49,12 @@
         
         <div class="mb-3">
           <label for="egj_custom_template_area" class="form-label">Template Editieren</label>
-          <textarea class="form-control" id="egj_custom_template_area" rows="3"></textarea>
+          <textarea class="form-control" id="egj_custom_template_area" rows="12"></textarea>
+        </div>
+
+        <div class="mb-3">
+          <label for="egj_raw_data_area" class="form-label">Roh Daten</label>
+          <textarea class="form-control" id="egj_raw_data_area" rows="12"></textarea>
         </div>
 
 
