@@ -99,13 +99,15 @@
       calenderTemplate = fallbackCalenderTemplate;
     }
 
+    erfindergeistCalendar.calenderTemplate = calenderTemplate;
+
     const template = Handlebars.compile(calenderTemplate);
 
     $("#egj_calendar_data").html(JSON.stringify(data, null, 2));
 
     $("#egj_calendar_container").html(template(data));
 
-    $("#egj_custom_template_area").val(calenderTemplate);
+
 
     jQuery("#egj_print_Button").click(function (event) {
       event.preventDefault();
@@ -130,6 +132,8 @@
 })((window.erfindergeistCalendar = window.erfindergeistCalendar || {}), jQuery);
 
 jQuery(document).ready(function () {
+  $("#egj_custom_template_area").val(erfindergeistCalendar.calenderTemplate);
+
   Handlebars.registerHelper("include", function (arr, key) {
     if (arr && Array.isArray(arr)) {
       return arr.includes(key);

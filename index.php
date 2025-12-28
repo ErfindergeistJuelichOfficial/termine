@@ -46,8 +46,13 @@
         <button onclick="location.href='./index.php?page=picture';" type="button" class="btn btn-primary">Termine mit Hintergrund</button>
         
         <br>
-        <p>Eigenes Template</p>
-        <textarea class="w-100" style="height: 200px;" id="egj_custom_template_area"></textarea>
+        
+        <div class="mb-3">
+          <label for="egj_custom_template_area" class="form-label">Template Editieren</label>
+          <textarea class="form-control" id="egj_custom_template_area" rows="3"></textarea>
+        </div>
+
+
         <p>Roh Daten</p>
         <pre id="egj_calendar_data"></pre>
       </div>
