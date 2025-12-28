@@ -1,0 +1,12 @@
+      <script id="egj_button_template" type="text/x-handlebars-template">
+        <div class="container m-2 no-print" style="z-index: 100">
+          <button id="egj_print_Button" type="button" class="btn btn-primary">Drucken</button>
+          {{#each pages}}
+            <button onclick="location.href='./index.php{{#if this.param}}?page={{this.param}}{{/if}}';" type="button" class="btn btn-primary">
+              {{this.label}}
+            </button>
+          {{/each}}
+          
+
+        </div>
+      </script>

@@ -37,32 +37,14 @@
         style="margin-left: auto; margin-right: auto"
         id="egj_calendar_container"
       >
-        <div class="shimmerBG content-line"></div>
-        <div class="shimmerBG content-line"></div>
-        <div class="shimmerBG content-line end"></div>
-        <hr />
-        <div class="shimmerBG content-line"></div>
-        <div class="shimmerBG content-line"></div>
-        <div class="shimmerBG content-line end"></div>
-        <hr />
-        <div class="shimmerBG content-line"></div>
-        <div class="shimmerBG content-line"></div>
-        <div class="shimmerBG content-line end"></div>
-        <hr />
-        <div class="shimmerBG content-line"></div>
-        <div class="shimmerBG content-line"></div>
-        <div class="shimmerBG content-line end"></div>
-        <hr />
-        <div class="shimmerBG content-line"></div>
-        <div class="shimmerBG content-line"></div>
-        <div class="shimmerBG content-line end"></div>
+        template loading...
       </div>
 
       <div class="container m-2 no-print" style="z-index: 100">
         <button id="egj_print_Button"type="button" class="btn btn-primary">Drucken</button>
         <button onclick="location.href='./index.php';" type="button" class="btn btn-primary">Alle Termine</button>
         <button onclick="location.href='./index.php?page=picture';" type="button" class="btn btn-primary">Termine mit Hintergrund</button>
-        <!-- <button onclick="location.href='./index.php?page=staender';" type="button" class="btn btn-primary">Ständer Termine (nächste drei)</button> -->
+        
         <br>
         <p>Eigenes Template</p>
         <textarea class="w-100" style="height: 200px;" id="egj_custom_template_area"></textarea>

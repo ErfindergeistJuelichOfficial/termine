@@ -105,6 +105,8 @@
 
     $("#egj_calendar_container").html(template(data));
 
+    $("#egj_custom_template_area").val(calenderTemplate);
+
     jQuery("#egj_print_Button").click(function (event) {
       event.preventDefault();
       window.print();
