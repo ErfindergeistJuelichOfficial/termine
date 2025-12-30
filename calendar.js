@@ -49,7 +49,7 @@
   erfindergeistCalendar.getGermanWeekDayShortString = getGermanWeekDayShortString;
 
   function getData() {
-    const url = location.hostname === "spielwiese-termine.erfindergeist.org" ? `spielwiese.erfindergeist.org` : location.hostname;
+    const url = location.hostname === "spielwiese-termine.erfindergeist.org" ? `spielwiese.erfindergeist.org` : `erfindergeist.org`;
     $.getJSON(`https://${url}/wp-json/erfindergeist/v2/events`)
       .done(function (json) {
          render(json);

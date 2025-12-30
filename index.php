@@ -57,9 +57,6 @@
           <textarea class="form-control" id="egj_raw_data_area" rows="12"></textarea>
         </div>
 
-
-        <p>Roh Daten</p>
-        <pre id="egj_calendar_data"></pre>
       </div>
     </main>
     
