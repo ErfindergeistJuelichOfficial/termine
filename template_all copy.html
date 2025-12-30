@@ -1,7 +1,7 @@
-<script id="gcalendarTemplate" type="text/x-handlebars-template">
+<script id="egj_calendar_template" type="text/x-handlebars-template">
   <div class="container-fluid text-dark visible-on-print">
     <h1>Erfindergeist Jülich e.V. Termine  </h1>
-    {{#each items}}
+    {{#each this}}
 
       {{#if (isOdd @index)}}
         <div class="row" style="background-color: #eee;">
@@ -17,7 +17,7 @@
             {{getDateFromDt dtstart_tz}}
           </div>
           <div class="col">
-            {{(getTimeFromDt dtstart_tz)}} - {{(getTimeFromDt dtend_tz)}}
+            <!-- {{(getTimeFromDt dtstart_tz)}} - {{(getTimeFromDt dtend_tz)}} -->
           </div>
         {{/if}}
         {{#if location}}

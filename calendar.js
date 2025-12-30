@@ -49,10 +49,10 @@
   erfindergeistCalendar.getGermanWeekDayShortString = getGermanWeekDayShortString;
 
   function getData() {
-    $.getJSON(`https://${location.hostname}/wp-json/erfindergeist/v2/events`)
+    const url = location.hostname === "spielwiese-termine.erfindergeist.org" ? `spielwiese.erfindergeist.org` : location.hostname;
+    $.getJSON(`https://${url}/wp-json/erfindergeist/v2/events`)
       .done(function (json) {
          render(json);
-
         
       })
       .fail(function (jqxhr, textStatus, error) {
@@ -101,19 +101,28 @@
 
     const template = Handlebars.compile(calenderTemplate);
 
-    // Daten sind bereits transformiert vom Backend
-    $("#gcalendarList").html(template(data));
+    $("#egj_raw_data_area").val(JSON.stringify(data, null, 2));
 
-    jQuery("#gcalendarPrintButton").click(function (event) {
+    $("#egj_calendar_container").html(template(data));
+
+
+
+    jQuery("#egj_print_Button").click(function (event) {
       event.preventDefault();
-      console.log("gcalender print");
-      // jQuery(".visible-on-print").offset({ left: 0, top: 0 })
       window.print();
     });
+
+    jQuery("#egj_custom_template_area").on( "change", function(event) {
+      event.preventDefault();
+      const calenderTemplate = $("#egj_custom_template_area").val();
+      const template = Handlebars.compile(calenderTemplate);
+      $("#egj_calendar_container").html(template(data));
+    });
+
   }
 
   erfindergeistCalendar.init = function () {
-    if (document.getElementById("gcalendarList")) {
+    if (document.getElementById("egj_calendar_container")) {
       getData();
     }
 
@@ -121,6 +130,8 @@
 })((window.erfindergeistCalendar = window.erfindergeistCalendar || {}), jQuery);
 
 jQuery(document).ready(function () {
+  jQuery("#egj_custom_template_area").val(document.getElementById("egj_calendar_template").innerHTML);
+
   Handlebars.registerHelper("include", function (arr, key) {
     if (arr && Array.isArray(arr)) {
       return arr.includes(key);
@@ -128,9 +139,31 @@ jQuery(document).ready(function () {
     return false;
   });
 
-  Handlebars.registerHelper("filter", function (arr, key) {
+  Handlebars.registerHelper('ifEquals', function(arg1, arg2, options) {
+    return arg1 === arg2
+  });
+
+  Handlebars.registerHelper('ifNotEquals', function(arg1, arg2, options) {
+    return arg1 !== arg2
+  });
+
+  Handlebars.registerHelper("getTags", function (str) {
+    if (str && typeof str === "string") {
+      // find in str things like #tag1, #tag2
+      const regex = /#([äüöÄÖÜßa-zA-Z0-9]+)/g;
+      const tags = [];
+      let match;
+      while ((match = regex.exec(str)) !== null) {
+        tags.push(match[1]);
+      }
+      return tags;
+    }
+    return [];
+  });
+
+  Handlebars.registerHelper("filter", function (arr, tags, key) {
     if (arr && Array.isArray(arr)) {
-      return arr.filter((dataItem) => dataItem?.tags.includes(key));
+      return arr.filter((item) => tags.includes(key));
     }
 
     return arr;
@@ -145,6 +178,10 @@ jQuery(document).ready(function () {
   });
 
   Handlebars.registerHelper("first", function (arr, num) {
+    if(!arr || !Array.isArray(arr)) {
+      console.warn("first helper called with invalid array. arr:", arr);
+      return [];
+    }
     return arr.slice(0, num);
   });
 
@@ -153,13 +190,16 @@ jQuery(document).ready(function () {
   });
 
   Handlebars.registerHelper("getDateFromDt", function (str) {
-    const dateTime = new Date(str);
-    return erfindergeistCalendar.getGermanDateString(dateTime);
+    const year = str.substring(0, 4);
+    const month = str.substring(4, 6);
+    const day = str.substring(6, 8);
+    return `${day}.${month}.${year}`;
   });
 
   Handlebars.registerHelper("getTimeFromDt", function (str) {
-    const dateTime = new Date(str);
-    return erfindergeistCalendar.getGermanTimeString(dateTime);
+    const hour = str.substring(9, 11);
+    const minute = str.substring(11, 13);
+    return `${hour}:${minute}`;
   });   
 
   erfindergeistCalendar.init();
