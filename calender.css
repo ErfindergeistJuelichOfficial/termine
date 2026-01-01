@@ -17,28 +17,15 @@
 .bd-container {
   padding: 1.25rem;
   border: 1px solid #e9ecef;
-  border-left-width: .5rem;
   border-radius: .25rem;
-  border-left-color: var(--wp--preset--color--primary);
   margin-top: 0.8rem;
 }
 
 .bd-container-even {
   padding: 1.25rem;
-  border: 1px solid #aaa;
-  border-left-width: .5rem;
   border-radius: .25rem;
-  border-left-color: var(--wp--preset--color--primary);
+  background-color: #aaa;
   margin-top: 0.8rem;
-}
-
-.bd-container-compact {
-  padding: 0.2rem;
-  border: 1px solid #aaa;
-  border-left-width: .5rem;
-  border-radius: .25rem;
-  border-left-color: var(--wp--preset--color--primary);
-  margin-top: 0.2rem;
 }
 
 @media print {
