@@ -1,124 +1,144 @@
 <script id="egj_calendar_template" type="text/x-handlebars-template">
- 
-  <div class="container-print text-dark visible-on-print"">
-    
-    <!-- Header -->
-    <div class="container-header">
-      <div class="row text-center">
-        <div class="col">
-          <h1 style="font-size: 2.5rem; font-weight: bold; color: #159989; margin-bottom: 0.5rem;">
-            Erfindergeist Jülich e.V.
-          </h1>
-          <h2 style="font-size: 2rem; color: #333; margin-top: 0;">
-            Termine
-          </h2>
-        </div>
+
+    <div class="container-print text-dark visible-on-print"">
+
+      <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; overflow: hidden;">
+        <img src="./muttkrat.png" alt="Hintergrundbild" style="width: 100%; height: 100%; object-fit: cover; filter: blur(5px);">
       </div>
-    </div>
 
-
-    <hr style="border-top: 2px solid #159989; margin-bottom: 1rem;">
-
-    <!-- Termine Liste (6-10 Einträge) -->
-    <div class="container-appointments" style="margin-bottom: 1rem;">
-      {{#each (first this 5)}}
-        {{#if (isEven @index)}}
-          <div class="bd-container" style="margin-bottom: 1.2rem; padding: 1rem;">
-        {{else}}
-          <div class="bd-container-even" style="margin-bottom: 1.2rem; padding: 1rem;">
-        {{/if}}
-            <div class="row">
-              <div class="col-12">
-                <h3 style="font-size: 1.5rem; font-weight: bold; margin-bottom: 0.5rem; color: #333;">
-                  {{summary}}
-                </h3>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-8" style="font-size: 1.2rem;">
-                {{#if (ifEquals (getDateFromDt dtstart) (getDateFromDt dtend))}}
-                  📅 {{getDateFromDt dtstart}} &nbsp;&nbsp; 🕑 {{getTimeFromDt dtstart}} - {{getTimeFromDt dtend}}
-                {{else}}
-                  📅 {{getDateFromDt dtstart}} - {{getDateFromDt dtend}} &nbsp;&nbsp; 🕑 {{getTimeFromDt dtstart}} - {{getTimeFromDt dtend}}
-                {{/if}}
-              </div>
-              <div class="col-4 text-end" style="font-size: 1.2rem; font-weight: 500;">
-                {{#if (include (getTags description) "Stadtbücherei")}}
-                  📚 Stadtbücherei
-                {{/if}}
-                {{#if (include (getTags description) "Awo")}}
-                  🏢 AWO
-                {{/if}}
-              </div>
-            </div>
-          </div>
-      {{/each}}
-    </div>
-
-    <hr style="border-top: 2px solid #159989; margin-bottom: 1rem;">
-
-    <!-- Footer mit QR-Code und Kontaktdaten -->
-    <div class="container-footer">
-
-      <div class="row">
-        <div class="col-3 text-center">
-          <img src="./Logo-02.png" alt="QR Code" style="width: auto; height: 221px;">
-        </div>
-        <div class="col-6">
-          <div style="font-size: 1.1rem; line-height: 1.2;">
-            <p><strong>Erfindergeist Jülich e.V.</strong></p>
-            <p style="margin-bottom: 0.2rem;">Werkstatt: im AWO Stadt Jülich e.V. Gebäude,<br> Marie-Juchacz-Weg 2,<br> 52428 Jülich</p>
-            <p style="margin-bottom: 0.2rem;">🌐 https://erfindergeist.org</p>
-            <p style="margin-bottom: 0.2rem;">✉️ kontakt@erfindergeist.org </p>
-            <p style="margin-bottom: 0.2rem;">📱 02461/6210862</p>
-            <p style="margin-bottom: 0.2rem;">Stand: {{today}}</p>
+      <!-- Header -->
+      <div class="container-header">
+        <div class="row text-center">
+          <div class="col">
+            <h1 style="font-size: 2.5rem; font-weight: bold; color: #159989; margin-bottom: 0.5rem;">
+              Erfindergeist Jülich e.V.
+            </h1>
+            <h2 style="font-size: 2rem; color: #333; margin-top: 0;">
+              Termine
+            </h2>
           </div>
         </div>
-        <div class="col-3 text-center">
-          <img src="./qr_link_to_linktree_H30.png" alt="QR Code" style="width: 221px; height: auto;">
+      </div>
+
+
+
+      <div class="container-appointments" style="margin-bottom: 1rem;">
+        {{#each (first this 7)}}
+          {{#if (isEven @index)}}
+            <div class="mk-container" style="margin-bottom: 1.2rem; padding: 1rem;">
+          {{else}}
+            <div class="mk-container-even" style="margin-bottom: 1.2rem; padding: 1rem;">
+          {{/if}}
+              <div class="row">
+                <div class="col-12">
+                  <h3 style="font-size: 1.5rem; font-weight: bold; margin-bottom: 0.5rem; color: #333;">
+                    {{summary}}
+                  </h3>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-8" style="font-size: 1.2rem;">
+                  {{#if (ifEquals (getDateFromDt dtstart) (getDateFromDt dtend))}}
+                    📅 {{getDateFromDt dtstart}} &nbsp;&nbsp; 🕑 {{getTimeFromDt dtstart}} - {{getTimeFromDt dtend}}
+                  {{else}}
+                    📅 {{getDateFromDt dtstart}} - {{getDateFromDt dtend}} &nbsp;&nbsp; 🕑 {{getTimeFromDt dtstart}} - {{getTimeFromDt dtend}}
+                  {{/if}}
+                </div>
+                <div class="col-4 text-end" style="font-size: 1.2rem; font-weight: 500;">
+                  {{#if (include (getTags description) "Stadtbücherei")}}
+                    📚 Stadtbücherei
+                  {{/if}}
+                  {{#if (include (getTags description) "Awo")}}
+                    🏢 AWO
+                  {{/if}}
+                </div>
+              </div>
+            </div>
+        {{/each}}
+      </div>
+
+
+
+      <!-- Footer mit QR-Code und Kontaktdaten -->
+      <div class="container-footer">
+
+        <div class="row">
+          <div class="col-3 text-center">
+            <img src="./Logo-02.png" alt="QR Code" style="width: auto; height: 221px;">
+          </div>
+          <div class="col-6">
+            <div style="font-size: 1.1rem; line-height: 1.2;">
+              <p><strong>Erfindergeist Jülich e.V.</strong></p>
+              <p style="margin-bottom: 0.2rem;">Werkstatt: im AWO Stadt Jülich e.V. Gebäude,<br> Marie-Juchacz-Weg 2,<br> 52428 Jülich</p>
+              <p style="margin-bottom: 0.2rem;">🌐 https://erfindergeist.org</p>
+              <p style="margin-bottom: 0.2rem;">✉️ kontakt@erfindergeist.org </p>
+              <p style="margin-bottom: 0.2rem;">📱 02461/6210862</p>
+              <p style="margin-bottom: 0.2rem;">Stand: {{today}}</p>
+            </div>
+          </div>
+          <div class="col-3 text-center d-flex flex-wrap align-items-center">
+            <img src="./qr_link_to_linktree_H30.png" alt="QR Code" style="width: 221px; height: auto;">
+          </div>
         </div>
       </div>
+
     </div>
+  <style>
 
-  </div>
-<style>
+    .container-print {
+      width: 100% !important;
+      height: 1020px !important;
+   }
 
-  .container-print {
-    
-    width: 100% !important;
-    /* height: 297mm !important; */
-    border: 3px dotted lightblue;
-  }
+    .container-header {
 
-  .container-header {
-    
-  }
+    }
 
-  .container-appointments {
-    padding: 0 30mm;
-  }
+    .container-appointments {
+      padding: 0 30mm;
 
-  .container-footer {
-    padding: 0 30mm;
-  }
+    }
 
-@page {
-  size: A4;
-  margin: 0;
-}
-@media print {
-  html, body {
-    /* width: 210mm;
-    height: 297mm; */
+    .container-footer {
+      padding: 2rem 30mm;
+      background-color:rgba(255, 255, 255, 0.5);
+
+    }
+
+    .mk-container {
+      padding: 1.25rem;
+      
+      border-left-width: .5rem;
+      border-radius: .25rem;  
+      margin-top: 0.8rem;
+      background-color:rgba(255, 255, 255, 0.8);
+    }
+
+    .mk-container-even {
+      padding: 1.25rem;
+      
+      border-left-width: .5rem;
+      border-radius: .25rem;  
+      margin-top: 0.8rem;
+      background-color:rgba(200, 200, 200, 0.8);
+
+    }
+
+  @page {
+    size: A4;
     margin: 0;
-    padding: 0;
   }
+  @media print {
+    html, body {
+      /* width: 210mm;
+      height: 297mm; */
+      margin: 0;
+      padding: 0;
+
+    }
 
 
-  /* ... the rest of the rules ... */
-}
-</style>
 
-
+  }
+  </style>
 </script>
-
