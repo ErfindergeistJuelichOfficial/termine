@@ -1,27 +1,31 @@
 <script id="egj_calendar_template" type="text/x-handlebars-template">
-  <div class="container-fluid text-dark visible-on-print" style="width: 210mm; height: 297mm; margin: 0; padding: 20mm 15mm; box-sizing: border-box; page-break-after: always;">
+ 
+  <div class="container-print text-dark visible-on-print"">
     
     <!-- Header -->
-    <div class="row text-center mb-4">
-      <div class="col">
-        <h1 style="font-size: 2.5rem; font-weight: bold; color: #159989; margin-bottom: 0.5rem;">
-          Erfindergeist Jülich e.V.
-        </h1>
-        <h2 style="font-size: 2rem; color: #333; margin-top: 0;">
-          Termine
-        </h2>
+    <div class="container-header">
+      <div class="row text-center">
+        <div class="col">
+          <h1 style="font-size: 2.5rem; font-weight: bold; color: #159989; margin-bottom: 0.5rem;">
+            Erfindergeist Jülich e.V.
+          </h1>
+          <h2 style="font-size: 2rem; color: #333; margin-top: 0;">
+            Termine
+          </h2>
+        </div>
       </div>
     </div>
 
-    <hr style="border-top: 3px solid #159989; margin-bottom: 2rem;">
+
+    <hr style="border-top: 2px solid #159989; margin-bottom: 1rem;">
 
     <!-- Termine Liste (6-10 Einträge) -->
-    <div class="container-fluid" style="flex: 1; margin-bottom: 2rem;">
-      {{#each (first this 10)}}
+    <div class="container-appointments" style="margin-bottom: 1rem;">
+      {{#each (first this 5)}}
         {{#if (isEven @index)}}
-          <div class="bd-container" style="margin-bottom: 1.2rem; padding: 1rem; border-left: 5px solid #159989;">
+          <div class="bd-container" style="margin-bottom: 1.2rem; padding: 1rem;">
         {{else}}
-          <div class="bd-container-even" style="margin-bottom: 1.2rem; padding: 1rem; border-left: 5px solid #F9B338;">
+          <div class="bd-container-even" style="margin-bottom: 1.2rem; padding: 1rem;">
         {{/if}}
             <div class="row">
               <div class="col-12">
@@ -51,43 +55,70 @@
       {{/each}}
     </div>
 
+    <hr style="border-top: 2px solid #159989; margin-bottom: 1rem;">
+
     <!-- Footer mit QR-Code und Kontaktdaten -->
-    <div style="position: absolute; bottom: 15mm; left: 15mm; right: 15mm;">
-      <hr style="border-top: 2px solid #159989; margin-bottom: 1rem;">
-      <div class="row align-items-center">
+    <div class="container-footer">
+
+      <div class="row">
         <div class="col-3 text-center">
-          <img src="./QRlinktree.png" alt="QR Code" style="width: 80mm; height: auto; max-width: 100%;">
+          <img src="./Logo-02.png" alt="QR Code" style="width: auto; height: 221px;">
         </div>
-        <div class="col-9">
-          <div style="font-size: 1.1rem; line-height: 1.8;">
-            <p style="margin: 0.3rem 0;"><strong>Erfindergeist Jülich e.V.</strong></p>
-            <p style="margin: 0.3rem 0;">📍 Ihre Adresse hier</p>
-            <p style="margin: 0.3rem 0;">📞 Telefon: +49 (0) 2461 123456</p>
-            <p style="margin: 0.3rem 0;">✉️ E-Mail: kontakt@erfindergeist.org</p>
-            <p style="margin: 0.3rem 0; font-size: 0.9rem; color: #666;">Stand: {{today}}</p>
+        <div class="col-6">
+          <div style="font-size: 1.1rem; line-height: 1.2;">
+            <p><strong>Erfindergeist Jülich e.V.</strong></p>
+            <p style="margin-bottom: 0.2rem;">Werkstatt: im AWO Stadt Jülich e.V. Gebäude,<br> Marie-Juchacz-Weg 2,<br> 52428 Jülich</p>
+            <p style="margin-bottom: 0.2rem;">🌐 https://erfindergeist.org</p>
+            <p style="margin-bottom: 0.2rem;">✉️ kontakt@erfindergeist.org </p>
+            <p style="margin-bottom: 0.2rem;">📱 02461/6210862</p>
+            <p style="margin-bottom: 0.2rem;">Stand: {{today}}</p>
           </div>
+        </div>
+        <div class="col-3 text-center">
+          <img src="./qr_link_to_linktree_H30.png" alt="QR Code" style="width: 221px; height: auto;">
         </div>
       </div>
     </div>
 
   </div>
-</script>
-
 <style>
-@media print {
-  @page {
-    size: A4;
-    margin: 0;
+
+  .container-print {
+    
+    width: 100% !important;
+    /* height: 297mm !important; */
+    border: 3px dotted lightblue;
   }
-  
-  body {
+
+  .container-header {
+    
+  }
+
+  .container-appointments {
+    padding: 0 30mm;
+  }
+
+  .container-footer {
+    padding: 0 30mm;
+  }
+
+@page {
+  size: A4;
+  margin: 0;
+}
+@media print {
+  html, body {
+    /* width: 210mm;
+    height: 297mm; */
     margin: 0;
     padding: 0;
   }
-  
-  .container-fluid {
-    width: 210mm !important;
-    height: 297mm !important;
-  }
+
+
+  /* ... the rest of the rules ... */
 }
 </style>
+
+
+</script>
+
