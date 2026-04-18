@@ -200,7 +200,26 @@ jQuery(document).ready(function () {
     const hour = str.substring(9, 11);
     const minute = str.substring(11, 13);
     return `${hour}:${minute}`;
-  });   
+  });
+
+  Handlebars.registerHelper("getShortDateFromDt", function (str) {
+    const month = str.substring(4, 6);
+    const day = str.substring(6, 8);
+    return `${day}.${month}.`;
+  });
+
+  Handlebars.registerHelper("getDayOfWeek", function (str) {
+    const year = str.substring(0, 4);
+    const month = str.substring(4, 6);
+    const day = str.substring(6, 8);
+    const date = new Date(year, month - 1, day);
+    const days = ["So", "Mo", "Di", "Mi", "Do", "Fr", "Sa"];
+    return days[date.getDay()];
+  });
+
+  Handlebars.registerHelper("currentYear", function () {
+    return new Date().getFullYear();
+  });
 
   erfindergeistCalendar.init();
 });

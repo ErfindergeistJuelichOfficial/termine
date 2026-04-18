@@ -1,93 +1,272 @@
+<style>
+
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&family=Kalam:wght@400;700&display=swap');
+
+/* CSS Custom Properties */
+:root {
+  --ink: #1a1a1a;
+  --paper: #fafaf7;
+  --muted: #6b6b66;
+  --rule: #1a1a1a;
+  --accent: #e8a33d;
+  --teal: #3aa89b;
+  --accent-soft: #f4dfb4;
+  --grid: #d9d6cc;
+}
+
+/* Reset & Base */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: #ece9e2;
+  color: var(--ink);
+  font-family: system-ui, -apple-system, sans-serif;
+}
+
+/* Typography helpers */
+.hand { font-family: 'Caveat', cursive; }
+.kalam { font-family: 'Kalam', cursive; }
+
+/* A4 Sheet */
+.sheet {
+  width: 210mm;
+  height: 297mm;
+  background: var(--paper);
+  box-shadow: 0 2px 0 rgba(0,0,0,.04), 0 30px 60px -30px rgba(0,0,0,.25), 0 8px 20px -10px rgba(0,0,0,.15);
+  position: relative;
+  overflow: hidden;
+  color: var(--ink);
+  margin: 0 auto;
+}
+
+/* Color Mode Classes (apply to .sheet) */
+.sheet.mode-bw { --accent: #1a1a1a; --teal: #1a1a1a; --accent-soft: #ececec; }
+.sheet.mode-yellow { --accent: #e8a33d; --teal: #1a1a1a; --accent-soft: #f6e3b6; }
+.sheet.mode-full { --accent: #e8a33d; --teal: #3aa89b; --accent-soft: #f6e3b6; }
+
+/* ================== VARIANTE 1 ================== */
+.v1 { padding: 22mm 20mm 20mm; }
+
+/* Header */
+.v1 .head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding-bottom: 10px;
+  border-bottom: 2px solid var(--ink);
+}
+
+.v1 .head .logo {
+  width: 65px;
+  height: auto;
+}
+
+.v1 .head h2 {
+  font-family: 'Kalam', sans-serif;
+  font-weight: 700;
+  font-size: 44px;
+  margin: 0;
+  line-height: 1;
+}
+
+.v1 .head .kicker {
+  color: var(--muted);
+  font-size: 14px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+
+.v1 .head .sub {
+  margin-top: 6px;
+  color: #333;
+  font-size: 14px;
+}
+
+/* Event List */
+.v1 .list { margin-top: 14px; }
+
+.v1 .row {
+  display: grid;
+  grid-template-columns: 62px 1fr auto;
+  gap: 14px;
+  align-items: baseline;
+  padding: 12px 0;
+  border-bottom: 1px dashed #c4c0b5;
+}
+
+/* Date column */
+.v1 .row .d {
+  font-weight: 700;
+  font-size: 15px;
+  color: var(--accent);
+  text-align: center;
+  line-height: 1;
+}
+.v1 .row .d small {
+  display: block;
+  font-size: 11px;
+  font-weight: 400;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: .05em;
+  margin-top: 2px;
+}
+
+/* Title column */
+.v1 .row .t {
+  font-family: 'Kalam', sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1.3;
+}
+
+.v1 .row .t em {
+  display: block;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 2px;
+}
+
+/* Time/Location column */
+.v1 .row .r {
+  font-size: 13px;
+  color: #333;
+  text-align: right;
+  max-width: 180px;
+}
+
+/* Footer */
+.v1 .foot {
+  position: absolute;
+  left: 20mm;
+  right: 20mm;
+  bottom: 14mm;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  border-top: 2px solid var(--ink);
+  padding-top: 10px;
+}
+
+.v1 .foot .txt {
+  font-size: 12px;
+  line-height: 1.4;
+  color: #333;
+}
+
+.v1 .foot .txt b {
+  font-family: 'Caveat', cursive;
+  font-weight: 700;
+  font-size: 22px;
+  display: block;
+  color: var(--accent);
+}
+
+/* QR Code */
+.qr {
+  width: 90px;
+  height: auto;
+  flex-shrink: 0;
+}
+
+/* Screen centering for preview */
+@media screen {
+  body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 20px;
+  }
+}
+
+/* ============== PRINT STYLES ============== */
+@page { size: A4; margin: 0; }
+
+@media print {
+  * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+  html, body {
+    background: #fff !important;
+    width: 210mm;
+    height: 297mm;
+    margin: 0 !important;
+    padding: 0 !important;
+    display: block !important;
+  }
+  .sheet {
+    box-shadow: none !important;
+    margin: 0 !important;
+    width: 210mm !important;
+    height: 297mm !important;
+    position: relative !important;
+    overflow: visible !important;
+  }
+  .v1, .head, .list, .row, .foot {
+    visibility: visible !important;
+    display: block !important;
+  }
+  .row { display: grid !important; grid-template-columns: 62px 1fr auto !important; }
+  .head, .foot { display: flex !important; }
+}
+</style>
+
 <script id="egj_calendar_template" type="text/x-handlebars-template">
-  <div class="container-fluid text-dark visible-on-print" style="width: 210mm; height: 297mm; margin: 0; padding: 20mm 15mm; box-sizing: border-box; page-break-after: always;">
-    
+<div class="sheet mode-yellow">
+  <div class="v1">
+
     <!-- Header -->
-    <div class="row text-center mb-4">
-      <div class="col">
-        <h1 style="font-size: 2.5rem; font-weight: bold; color: #159989; margin-bottom: 0.5rem;">
-          Erfindergeist Jülich e.V.
-        </h1>
-        <h2 style="font-size: 2rem; color: #333; margin-top: 0;">
-          Termine
-        </h2>
+    <div class="head">
+      <div>
+        <div class="kicker">Erfindergeist Jülich e.V.</div>
+        <h2>Termine</span></h2>
+        <div class="sub">Offene Werkstatt · Stammtisch · Workshops · Repaircafé</div>
       </div>
+      <img src="./logo-weiss.svg" alt="Erfindergeist Logo" class="logo">
     </div>
 
-    <hr style="border-top: 3px solid #159989; margin-bottom: 2rem;">
-
-    <!-- Termine Liste (6-10 Einträge) -->
-    <div class="container-fluid" style="flex: 1; margin-bottom: 2rem;">
-      {{#each (first this 10)}}
-        {{#if (isEven @index)}}
-          <div class="bd-container" style="margin-bottom: 1.2rem; padding: 1rem; border-left: 5px solid #159989;">
-        {{else}}
-          <div class="bd-container-even" style="margin-bottom: 1.2rem; padding: 1rem; border-left: 5px solid #F9B338;">
-        {{/if}}
-            <div class="row">
-              <div class="col-12">
-                <h3 style="font-size: 1.5rem; font-weight: bold; margin-bottom: 0.5rem; color: #333;">
-                  {{summary}}
-                </h3>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-8" style="font-size: 1.2rem;">
-                {{#if (ifEquals (getDateFromDt dtstart) (getDateFromDt dtend))}}
-                  📅 {{getDateFromDt dtstart}} &nbsp;&nbsp; 🕑 {{getTimeFromDt dtstart}} - {{getTimeFromDt dtend}}
-                {{else}}
-                  📅 {{getDateFromDt dtstart}} - {{getDateFromDt dtend}} &nbsp;&nbsp; 🕑 {{getTimeFromDt dtstart}} - {{getTimeFromDt dtend}}
-                {{/if}}
-              </div>
-              <div class="col-4 text-end" style="font-size: 1.2rem; font-weight: 500;">
-                {{#if (include (getTags description) "Stadtbücherei")}}
-                  📚 Stadtbücherei
-                {{/if}}
-                {{#if (include (getTags description) "Awo")}}
-                  🏢 AWO
-                {{/if}}
-              </div>
-            </div>
-          </div>
+    <!-- Event List -->
+    <div class="list">
+      {{#each (first this 8)}}
+      <div class="row">
+        <div class="d">{{getShortDateFromDt dtstart}}<small>{{getDayOfWeek dtstart}}</small></div>
+        <div class="t">
+          {{summary}}
+          <em>{{#if description}}{{description}}{{else}}–{{/if}}</em>
+        </div>
+        <div class="r">
+          {{getTimeFromDt dtstart}} – {{getTimeFromDt dtend}}
+          <br><span style="color:var(--muted);font-size:12px">
+          {{#if (include (getTags description) "Awo")}}
+            💡 Erfindergeist Werkstatt
+          {{else if (include (getTags description) "Stadtbücherei")}}
+            📚 Stadtbücherei
+          {{else}}
+            {{location}}
+          {{/if}}
+          </span>
+        </div>
+      </div>
       {{/each}}
     </div>
 
-    <!-- Footer mit QR-Code und Kontaktdaten -->
-    <div style="position: absolute; bottom: 15mm; left: 15mm; right: 15mm;">
-      <hr style="border-top: 2px solid #159989; margin-bottom: 1rem;">
-      <div class="row align-items-center">
-        <div class="col-3 text-center">
-          <img src="./QRlinktree.png" alt="QR Code" style="width: 80mm; height: auto; max-width: 100%;">
-        </div>
-        <div class="col-9">
-          <div style="font-size: 1.1rem; line-height: 1.8;">
-            <p style="margin: 0.3rem 0;"><strong>Erfindergeist Jülich e.V.</strong></p>
-            <p style="margin: 0.3rem 0;">📍 Ihre Adresse hier</p>
-            <p style="margin: 0.3rem 0;">📞 Telefon: +49 (0) 2461 123456</p>
-            <p style="margin: 0.3rem 0;">✉️ E-Mail: kontakt@erfindergeist.org</p>
-            <p style="margin: 0.3rem 0; font-size: 0.9rem; color: #666;">Stand: {{today}}</p>
-          </div>
-        </div>
+    <!-- Footer -->
+    <div class="foot">
+      <div class="txt">
+        <b>Wer sind wir?</b>
+        Wir sind eine offene Werkstatt in Jülich. Ein Ort zum Tüfteln, Bauen,
+        Reparieren und Voneinander-Lernen. Einfach vorbeikommen, mitmachen, Werkzeug nutzen.
+        <br>Alle Termine &amp; mehr Infos auf erfindergeist.org - Änderungen vorbehalten.
+        <br><small>Stand {{today}}</small>
       </div>
+      <img src="./QRlinktree.png" alt="QR Code" class="qr">
     </div>
 
   </div>
+</div>
 </script>
-
-<style>
-@media print {
-  @page {
-    size: A4;
-    margin: 0;
-  }
-  
-  body {
-    margin: 0;
-    padding: 0;
-  }
-  
-  .container-fluid {
-    width: 210mm !important;
-    height: 297mm !important;
-  }
-}
-</style>
