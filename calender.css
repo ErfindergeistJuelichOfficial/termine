@@ -42,16 +42,21 @@
 }
 
 @media print {
+  @page {
+    size: A4 portrait;
+    margin: 10mm;
+  }
+
   :root {
     font-family: Arial, sans-serif;
-    font-size: 1.2rem;
+    font-size: 11px;
     color-scheme: only light;
     font-synthesis: none;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
-  
+
   body {
     margin: 0;
     overflow-wrap: break-word;
@@ -85,6 +90,28 @@
   .visible-on-print {
     display: block;
     visibility: visible;
+  }
+
+  .visible-on-print .container-fluid {
+    padding: 0 !important;
+  }
+
+  .visible-on-print .row {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+  }
+
+  .visible-on-print .row > .col {
+    white-space: nowrap !important;
+    flex: 0 0 auto !important;
+    width: auto !important;
+    padding: 0.2rem 0.5rem !important;
+  }
+
+  .visible-on-print .row > .col:first-child {
+    flex: 1 1 auto !important;
+    white-space: normal !important;
+    min-width: 0;
   }
 }
 
